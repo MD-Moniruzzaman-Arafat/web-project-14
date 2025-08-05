@@ -1,14 +1,157 @@
 import { useContext } from "react";
 import { BooksDetailContext } from "../context";
+import { toast, ToastContainer } from "react-toastify";
 
 const BooksDetailsPage = () => {
   const { booksDetails } = useContext(BooksDetailContext);
   console.log(booksDetails);
+
+  const handleAddToRead = (item) => {
+    // Step 1: Get existing cart or start with empty array
+    const existingRead = JSON.parse(localStorage.getItem("read")) || [];
+    const existingWish = JSON.parse(localStorage.getItem("wish")) || [];
+
+    // Optional: Check if item already exists by ID
+    const isExistsRead = existingRead.some((i) => i.bookId === item.bookId);
+    if (isExistsRead) {
+      toast.warn(
+        `Tit's already been added
+read list and this Book will not be added to the read list.`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      return;
+    }
+    const isExistsWish = existingWish.some((i) => i.bookId === item.bookId);
+    if (isExistsWish) {
+      toast.warn(
+        `Tit's already been added
+wish list and this Book will not be added to the read list.`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      return;
+    } else {
+      // Step 2: Add new item to the array
+      const updatedRead = [...existingRead, item];
+
+      // Step 3: Save back to localStorage
+      localStorage.setItem("read", JSON.stringify(updatedRead));
+      toast.success(
+        `The clicked item will be added to the local
+storage.`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+    }
+  };
+
+  const handleAddToWish = (item) => {
+    // Step 1: Get existing cart or start with empty array
+    const existingRead = JSON.parse(localStorage.getItem("read")) || [];
+    const existingWish = JSON.parse(localStorage.getItem("wish")) || [];
+
+    // Optional: Check if item already exists by ID
+    const isExistsWish = existingWish.some((i) => i.bookId === item.bookId);
+    if (isExistsWish) {
+      toast.warn(
+        `Tit's already been added
+wish list and this Book will not be added to the wish list.`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      return;
+    }
+    const isExistsRead = existingRead.some((i) => i.bookId === item.bookId);
+    if (isExistsRead) {
+      toast.warn(
+        `Tit's already been added
+read list and this Book will not be added to the wish list.`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+      return;
+    } else {
+      // Step 2: Add new item to the array
+      const updatedRead = [...existingRead, item];
+
+      // Step 3: Save back to localStorage
+      localStorage.setItem("wish", JSON.stringify(updatedRead));
+
+      toast.success(
+        `The clicked item will be added to the local
+storage.`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
+    }
+  };
+
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <div className="container mx-auto my-10 flex justify-center gap-10 flex-col md:flex-row">
         <img
-          src={booksDetails.image}
+          src={booksDetails?.image}
           alt=""
           className="bg-base-300 p-20 max-w-[425px]"
         />
@@ -67,8 +210,16 @@ const BooksDetailsPage = () => {
               </table>
             </div>
             <div className="flex items-center gap-2 mt-5">
-              <button className="btn btn-outline px-5 py-2">Read</button>
-              <button className="btn bg-[#50B1C9] text-white px-5 py-5">
+              <button
+                onClick={() => handleAddToRead(booksDetails)}
+                className="btn btn-outline px-5 py-2"
+              >
+                Read
+              </button>
+              <button
+                onClick={() => handleAddToWish(booksDetails)}
+                className="btn bg-[#50B1C9] text-white px-5 py-5"
+              >
                 Wishlist
               </button>
             </div>
