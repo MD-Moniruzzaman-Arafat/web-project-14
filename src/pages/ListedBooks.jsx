@@ -6,6 +6,29 @@ const ListedBooks = () => {
   const [readBooks, setReadBooks] = useState([]);
   const [wishBooks, setWishBooks] = useState([]);
 
+  function handleSortRating() {
+    const readBooksResult = JSON.parse(localStorage.getItem("read"));
+    setReadBooks(readBooksResult?.sort((a, b) => a.rating - b.rating));
+    const wishBooksResult = JSON.parse(localStorage.getItem("wish"));
+    setWishBooks(wishBooksResult?.sort((a, b) => a.rating - b.rating));
+  }
+  function handleSortPage() {
+    const readBooksResult = JSON.parse(localStorage.getItem("read"));
+    setReadBooks(readBooksResult?.sort((a, b) => a.totalPages - b.totalPages));
+    const wishBooksResult = JSON.parse(localStorage.getItem("wish"));
+    setWishBooks(wishBooksResult?.sort((a, b) => a.totalPages - b.totalPages));
+  }
+  function handleSortYear() {
+    const readBooksResult = JSON.parse(localStorage.getItem("read"));
+    setReadBooks(
+      readBooksResult?.sort((a, b) => a.yearOfPublishing - b.yearOfPublishing)
+    );
+    const wishBooksResult = JSON.parse(localStorage.getItem("wish"));
+    setWishBooks(
+      wishBooksResult?.sort((a, b) => a.yearOfPublishing - b.yearOfPublishing)
+    );
+  }
+
   useEffect(() => {
     const readBooksResult = JSON.parse(localStorage.getItem("read"));
     if (readBooksResult) {
@@ -16,7 +39,6 @@ const ListedBooks = () => {
       setWishBooks(wishBooksResult);
     }
   }, []);
-  console.log(readBooks);
   return (
     <>
       <div className="container mx-auto my-10">
@@ -37,13 +59,13 @@ const ListedBooks = () => {
               tabIndex={0}
               className="dropdown-content menu items-center bg-base-100 rounded-box z-1 w-40 p-2 shadow-sm"
             >
-              <li>
+              <li onClick={handleSortRating}>
                 <a>Rating</a>
               </li>
-              <li>
+              <li onClick={handleSortPage}>
                 <a>Number of pages</a>
               </li>
-              <li>
+              <li onClick={handleSortYear}>
                 <a>Publisher year</a>
               </li>
             </ul>
