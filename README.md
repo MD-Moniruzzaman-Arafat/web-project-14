@@ -2,7 +2,7 @@
 
 # 📚 BookVerse - A React Book Listing Website
 
-🔗 **Live Site:** [https://your-live-site-link.netlify.app](https://your-live-site-link.netlify.app)
+🔗 **Live Site:** [https://moonlit-dolphin-06208f.netlify.app](https://moonlit-dolphin-06208f.netlify.app/)
 
 ---
 
