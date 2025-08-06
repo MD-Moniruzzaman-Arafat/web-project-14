@@ -1,13 +1,34 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # web-project-14
+
+# 📚 BookVerse - A React Book Listing Website
+
+🔗 **Live Site:** [https://your-live-site-link.netlify.app](https://your-live-site-link.netlify.app)
+
+---
+
+## ✨ Features
+
+- ✅ Fully responsive website layout
+- 📖 Book listing with dynamic details page
+- 🔥 Add books to "Read" and "Wishlist" using localStorage
+- 📊 Custom Shape Bar Chart of read books vs total pages (using Recharts)
+- 🔍 Sorting and filtering books by rating, page count, and publish year
+- 🎨 Active NavLink routing with smooth user experience
+- ✅ Toast notifications for duplicate adds and valid actions
+
+---
+
+---
+
+## 🛠️ Technologies Used
+
+- React + Vite
+- React Router DOM
+- React Toastify
+- Recharts (for custom shape bar chart)
+- Tailwind CSS
+- Axios
+- React-icons
+- LocalStorage (for state persistence)
+
+---
