@@ -6,7 +6,6 @@ const BooksDetailsPage = () => {
   const handleAddToRead = (item) => {
     // Step 1: Get existing cart or start with empty array
     const existingRead = JSON.parse(localStorage.getItem("read")) || [];
-    const existingWish = JSON.parse(localStorage.getItem("wish")) || [];
 
     // Optional: Check if item already exists by ID
     const isExistsRead = existingRead.some((i) => i.bookId === item.bookId);
@@ -27,44 +26,26 @@ read list and this Book will not be added to the read list.`,
       );
       return;
     }
-    const isExistsWish = existingWish.some((i) => i.bookId === item.bookId);
-    if (isExistsWish) {
-      toast.warn(
-        `Tit's already been added
-wish list and this Book will not be added to the read list.`,
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        }
-      );
-      return;
-    } else {
-      // Step 2: Add new item to the array
-      const updatedRead = [...existingRead, item];
 
-      // Step 3: Save back to localStorage
-      localStorage.setItem("read", JSON.stringify(updatedRead));
-      toast.success(
-        `The clicked item will be added to the local
+    // Step 2: Add new item to the array
+    const updatedRead = [...existingRead, item];
+
+    // Step 3: Save back to localStorage
+    localStorage.setItem("read", JSON.stringify(updatedRead));
+    toast.success(
+      `The clicked item will be added to the local
 storage.`,
-        {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        }
-      );
-    }
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
   };
 
   const handleAddToWish = (item) => {

@@ -1,8 +1,12 @@
 import { CiLocationOn } from "react-icons/ci";
 import { IoMdCopy } from "react-icons/io";
 import { IoPeopleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const BooksListCard = ({ book }) => {
+  function handleDetails(data) {
+    localStorage.setItem("bookDetails", JSON.stringify(data));
+  }
   return (
     <>
       <div className="flex flex-col md:flex-row border border-gray-300 p-5 rounded-2xl items-center gap-5 my-2">
@@ -45,7 +49,9 @@ const BooksListCard = ({ book }) => {
               Rating: {book?.rating}
             </span>
             <span className="text-white bg-[#23BE0A] px-3 py-1 rounded-full">
-              View Details
+              <Link to={"/books-details"} onClick={() => handleDetails(book)}>
+                View Details
+              </Link>
             </span>
           </div>
         </div>
