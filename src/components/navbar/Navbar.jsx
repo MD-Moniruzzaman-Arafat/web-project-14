@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const menus = (
     <>
@@ -5,7 +7,7 @@ const Navbar = () => {
         <a>Home</a>
       </li>
       <li>
-        <a>Listed Books</a>
+        <Link to={"listed-books"}>Listed Books</Link>
       </li>
       <li>
         <a>Pages to Read</a>

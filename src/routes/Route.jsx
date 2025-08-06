@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import HomePage from "../pages/HomePage";
 import { fetchBooks } from "../fetchData";
 import BooksDetailsPage from "../pages/BooksDetailsPage";
+import ListedBooks from "../pages/ListedBooks";
 
 const route = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const route = createBrowserRouter([
       {
         path: "/books-details",
         element: <BooksDetailsPage />,
+      },
+      {
+        path: "/listed-books",
+        element: <ListedBooks />,
       },
     ],
   },
