@@ -1,14 +1,17 @@
-import { useContext } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { BooksDetailContext } from "../../context";
 
 const BooksCard = ({ data }) => {
-  const { setBooksDetails } = useContext(BooksDetailContext);
+  function handleSetDetailsLocalStorage(data) {
+    localStorage.setItem("bookDetails", JSON.stringify(data));
+  }
 
   return (
     <>
-      <Link onClick={() => setBooksDetails(data)} to={"books-details"}>
+      <Link
+        onClick={() => handleSetDetailsLocalStorage(data)}
+        to={"books-details"}
+      >
         <div className="card bg-base-100 max-w-full shadow-sm">
           <figure className="m-5 p-5 bg-base-200">
             <img

@@ -1,10 +1,7 @@
-import { useContext } from "react";
-import { BooksDetailContext } from "../context";
 import { toast, ToastContainer } from "react-toastify";
 
 const BooksDetailsPage = () => {
-  const { booksDetails } = useContext(BooksDetailContext);
-  console.log(booksDetails);
+  const booksDetails = JSON.parse(localStorage.getItem("bookDetails"));
 
   const handleAddToRead = (item) => {
     // Step 1: Get existing cart or start with empty array
