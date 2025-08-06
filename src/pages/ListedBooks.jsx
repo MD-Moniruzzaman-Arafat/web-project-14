@@ -1,7 +1,22 @@
 import { IoIosArrowDown } from "react-icons/io";
 import BooksListCard from "../components/booksListCard/BooksListCard";
+import { useEffect, useState } from "react";
 
 const ListedBooks = () => {
+  const [readBooks, setReadBooks] = useState([]);
+  const [wishBooks, setWishBooks] = useState([]);
+
+  useEffect(() => {
+    const readBooksResult = JSON.parse(localStorage.getItem("read"));
+    if (readBooksResult) {
+      setReadBooks(readBooksResult);
+    }
+    const wishBooksResult = JSON.parse(localStorage.getItem("wish"));
+    if (wishBooksResult) {
+      setWishBooks(wishBooksResult);
+    }
+  }, []);
+  console.log(readBooks);
   return (
     <>
       <div className="container mx-auto my-10">
@@ -42,9 +57,12 @@ const ListedBooks = () => {
             name="my_tabs_3"
             className="tab"
             aria-label="Read Books"
+            defaultChecked
           />
           <div className="tab-content bg-base-100 border-base-300 p-6">
-            <BooksListCard />
+            {readBooks?.map((book) => (
+              <BooksListCard key={book.bookId} book={book} />
+            ))}
           </div>
 
           <input
@@ -52,10 +70,11 @@ const ListedBooks = () => {
             name="my_tabs_3"
             className="tab"
             aria-label="Wishlist Books"
-            defaultChecked
           />
           <div className="tab-content bg-base-100 border-base-300 p-6">
-            Wishlist Books
+            {wishBooks?.map((book) => (
+              <BooksListCard key={book.bookId} book={book} />
+            ))}
           </div>
         </div>
       </div>

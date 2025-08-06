@@ -110,10 +110,10 @@ read list and this Book will not be added to the wish list.`,
       return;
     } else {
       // Step 2: Add new item to the array
-      const updatedRead = [...existingRead, item];
+      const updatedWish = [...existingWish, item];
 
       // Step 3: Save back to localStorage
-      localStorage.setItem("wish", JSON.stringify(updatedRead));
+      localStorage.setItem("wish", JSON.stringify(updatedWish));
 
       toast.success(
         `The clicked item will be added to the local
