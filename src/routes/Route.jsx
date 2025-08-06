@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import { fetchBooks } from "../fetchData";
 import BooksDetailsPage from "../pages/BooksDetailsPage";
 import ListedBooks from "../pages/ListedBooks";
+import PagesToRead from "../pages/PagesToRead";
 
 const route = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const route = createBrowserRouter([
       {
         path: "/listed-books",
         element: <ListedBooks />,
+      },
+      {
+        path: "/page-to-read",
+        element: <PagesToRead />,
       },
     ],
   },

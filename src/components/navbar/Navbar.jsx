@@ -10,7 +10,7 @@ const Navbar = () => {
         <Link to={"listed-books"}>Listed Books</Link>
       </li>
       <li>
-        <a>Pages to Read</a>
+        <Link to={"page-to-read"}>Pages to Read</Link>
       </li>
       <li className="md:hidden">
         <a>Sign In</a>
