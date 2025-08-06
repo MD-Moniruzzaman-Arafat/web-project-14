@@ -1,16 +1,37 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const menus = (
     <>
       <li>
-        <Link to={"/"}>Home</Link>
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isActive ? "text-[#23BE0A]" : isPending ? "pending" : ""
+          }
+          to={"/"}
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to={"listed-books"}>Listed Books</Link>
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isActive ? "text-[#23BE0A]" : isPending ? "pending" : ""
+          }
+          to={"listed-books"}
+        >
+          Listed Books
+        </NavLink>
       </li>
       <li>
-        <Link to={"page-to-read"}>Pages to Read</Link>
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isActive ? "text-[#23BE0A]" : isPending ? "pending" : ""
+          }
+          to={"page-to-read"}
+        >
+          Pages to Read
+        </NavLink>
       </li>
       <li className="md:hidden">
         <a>Sign In</a>
